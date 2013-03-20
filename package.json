@@ -1,0 +1,20 @@
+{
+  "name": "callback-wrappers",
+  "version": "0.1.0",
+  "description": "wrappers for async callbacks that implement common error handling scenarios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/femto113/node-callback-wrappers.git"
+  },
+  "keywords": [
+    "callback",
+    "async"
+  ],
+  "author": "Ken Woodruff <ken.woodruff@gmail.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
