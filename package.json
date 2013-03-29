@@ -1,6 +1,6 @@
 {
   "name": "callback-wrappers",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "wrappers for async callbacks that implement common error handling scenarios",
   "main": "index.js",
   "scripts": {
