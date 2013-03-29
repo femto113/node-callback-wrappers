@@ -5,20 +5,10 @@ Function wrappers for async callbacks that implement common, simple error handli
 ## Install
 
 ```bash
-    npm install ec2-instance-data
+    npm install callback-wrappers
 ```
 
-## Example
-
-```javascript
-    var instance = require("ec2-instance-data");
-
-    instance.init(function () {
-        console.log("instance.latest = %s", JSON.stringify(instance.latest, null, "  "));
-    });
-```
-
-## Details
+## Description
 
 Most async methods in the node world expect a callback with an `(error, data)` signature.
 In programming scenarios where complex error handling is impossible or unneccessary (for
@@ -88,6 +78,7 @@ including `logIfError`, will the wrapped function be called if the
 
 ## Change Log
 
+- 0.2.0: using Object.defineProperty to make the Function.prototype extensions not enumerable
 - 0.1.0: created
 
 ## Acknowledgements

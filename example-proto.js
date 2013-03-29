@@ -7,8 +7,17 @@ function asyncFunction(opts, callback) {
 }
 
 asyncFunction({ data: "foo" }, function (data) {
-  console.log("process should now print 'bar' and exit with status 2");
-  asyncFunction({ error: "bar" }, function (data) {
+  console.log("process should log 'yikes' (but not exit)");
+  asyncFunction({ error: "yikes" }, function (data) {
     console.log("you should not see this message");
-  }.xie(2));
-}.xie(1));
+  }.lie(2));
+}.lie(1));
+
+process.nextTick(function () {
+  asyncFunction({ data: "foo" }, function (data) {
+    console.log("process should now print 'bar' and exit with status 2");
+    asyncFunction({ error: "bar" }, function (data) {
+      console.log("you should not see this message");
+    }.xie(2));
+  }.xie(1));
+});

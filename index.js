@@ -47,21 +47,19 @@ exports.tie = exports.throwIfError = function (callback)
 
 exports.Function = function () {
 
-  Function.prototype.lie = Function.prototype.logIfError = function () {
-    return exports.logIfError(this);
-  };
+  ["logIfError", "lie", "abortIfError", "aie", "throwIfError"].forEach(function (method) {
+    Object.defineProperty(Function.prototype, method, {
+      enumerable : false,
+      value: function () { return exports[method](this); }
+    });
+  });
 
-  Function.prototype.xie = Function.prototype.exitIfError = function (exitCode) {
-    return exports.exitIfError(exitCode, this);
-  };
-
-  Function.prototype.aie = Function.prototype.abortIfError = function () {
-    return exports.abortIfError(this);
-  };
-
-  Function.prototype.tie = Function.prototype.throwIfError = function () {
-    return exports.throwIfError(this);
-  };
+  ["exitIfError", "xie"].forEach(function (method) {
+    Object.defineProperty(Function.prototype, method, {
+      enumerable : false,
+      value: function (exitCode) { return exports[method](exitCode, this); }
+    });
+  });
 
   return exports;
 }
