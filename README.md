@@ -50,6 +50,10 @@ asyncFunction1({ ... }, exitIfError(1, function (data) {
 });
 ```
 
+There's also a `nextIfError` wrapper that takes a function with a `(data, next)`
+signature (where `next` is a callback of the `(error, ...)` variety).  This simply
+passes `error` to `next` (and, unlike the other methods, does not log).
+
 ### Function.prototype option
 
 If messing with built-in objects' prototypes doesn't skeeve you out, you can use
@@ -70,8 +74,8 @@ asyncFunction1({ ... }, function (data) {
 ### long & short wrapper names
 
 The wrappers all follow a naming convention of `actionIfError`, where
-action is one of `log`, `abort`, `exit`, or `throw`.  For brevity these
-can be referenced by the initials `l`, `a`, `x`, and `t`, followed by `ie` 
+action is one of `log`, `abort`, `exit`, `throw` or `next`.  For brevity these
+can be referenced by the initials `l`, `a`, `x`, `t` and `n`, followed by `ie` 
 (for "If Error").  Note that in all cases the error is logged, and in no case,
 including `logIfError`, will the wrapped function be called if the 
 `error` parameter isn't empty.

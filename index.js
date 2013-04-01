@@ -45,9 +45,21 @@ exports.tie = exports.throwIfError = function (callback)
   };
 }
 
+/* for the (error, data, next) style, calls next with error as first argument */
+exports.nie = exports.nextIfError = function (callback)
+{
+  return function (error, data, next) {
+    if (error) {
+      next(error);
+    } else {
+      callback(data, next);
+    }
+  };
+}
+
 exports.Function = function () {
 
-  ["logIfError", "lie", "abortIfError", "aie", "throwIfError"].forEach(function (method) {
+  ["logIfError", "lie", "abortIfError", "aie", "throwIfError", "nextIfError", "nie"].forEach(function (method) {
     Object.defineProperty(Function.prototype, method, {
       enumerable : false,
       value: function () { return exports[method](this); }
