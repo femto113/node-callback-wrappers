@@ -12,6 +12,10 @@ exports.lie = exports.logIfError = function (callback)
 
 exports.xie = exports.exitIfError = function (exitCode, callback)
 {
+  if (typeof(callback) === "undefined") {
+    callback = exitCode;
+    exitCode = undefined;
+  }
   return function (error, data) {
     if (error) {
       console.error(error);
