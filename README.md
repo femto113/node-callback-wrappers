@@ -82,6 +82,7 @@ including `logIfError`, will the wrapped function be called if the
 
 ## Change Log
 
+- 0.3.0: added nextIfError
 - 0.2.0: using Object.defineProperty to make the Function.prototype extensions not enumerable
 - 0.1.0: created
 
